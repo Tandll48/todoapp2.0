@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj",
+        "projectName": "Todoapp",
+        "projectPath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj",
+        "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
