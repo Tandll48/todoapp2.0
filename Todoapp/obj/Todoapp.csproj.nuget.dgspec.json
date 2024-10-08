@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj": {}
+    "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\Todoapp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj": {
+    "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\Todoapp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj",
+        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\Todoapp.csproj",
         "projectName": "Todoapp",
-        "projectPath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj",
+        "projectPath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\Todoapp.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\obj\\",
+        "outputPath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",

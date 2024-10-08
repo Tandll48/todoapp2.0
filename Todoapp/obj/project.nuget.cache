@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "73OOr2Zupu6CRbSW1I86jnE7n0/bhqCvi1FNKXAq1Cg7FG22bnrW54NbKKi0EpW0MSX2bcP4oqoy+7r5GTcCNQ==",
+  "dgSpecHash": "a69xvodGY1+paASV4yIvetZ43gIKirpWugG+2dt8vXYlwV15VSpcQpxsCATL2VjGgSXSmXP9IWSk+6XpbDiY3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj",
+  "projectFilePath": "C:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\Todoapp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leo\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",

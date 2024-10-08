@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Todoapp
-build_property.ProjectDir = C:\Users\Leo\Documents\Schule 24-25\INSY\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\Todoapp\
+build_property.ProjectDir = C:\Users\Leo\Documents\Schule 24-25\INSY\todoapp2.0\Todoapp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

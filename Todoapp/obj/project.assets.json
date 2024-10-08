@@ -1744,11 +1744,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj",
+      "projectUniqueName": "c:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\Todoapp.csproj",
       "projectName": "Todoapp",
-      "projectPath": "c:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\Todoapp.csproj",
+      "projectPath": "c:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\Todoapp.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\2024-25-4ahit-insy-02-todoapplication-tmpl-INSY-4AHIT-ToDoApplication\\Todoapp\\obj\\",
+      "outputPath": "c:\\Users\\Leo\\Documents\\Schule 24-25\\INSY\\todoapp2.0\\Todoapp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
