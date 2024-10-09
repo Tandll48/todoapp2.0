@@ -104,8 +104,8 @@ public class ConsolApplication{
         
         
         
-        
-        
+        //VIEW 1: CREATE VIEW selectUnchecked AS SELECT liste.name, aufgabe.beschreibung, aufgabe.priorität, aufgabe.user_email FROM `aufgabe` JOIN `liste` ON liste.id = aufgabe.listen_id WHERE isCompleted = 0;
+        //VIEW 2: CREATE VIEW selectchecked AS SELECT liste.name, aufgabe.beschreibung, aufgabe.priorität, aufgabe.user_email FROM `aufgabe` JOIN `liste` ON liste.id = aufgabe.listen_id WHERE isCompleted = 1;
         
         void MainConsole(){
             Console.WriteLine("Active user: "+activeUser);
@@ -175,10 +175,12 @@ public class ConsolApplication{
                     Console.WriteLine("\nListe    Beschreibung    Priorität");
                     switch (input){
                         case "1":
-                            Request("SELECT liste.name, aufgabe.beschreibung, aufgabe.priorität FROM `aufgabe` JOIN  `liste` ON liste.id = aufgabe.listen_id WHERE isCompleted = 0 AND aufgabe.user_email = '"+activeUser+"' ORDER BY priorität DESC;");
+                        //View1 used
+                            Request("SELECT name, beschreibung, priorität FROM selectunchecked WHERE user_email = '"+activeUser+"' ORDER BY priorität DESC;");
                             break;
                         case "2":
-                            Request("SELECT liste.name, aufgabe.beschreibung, aufgabe.priorität FROM `aufgabe` JOIN  `liste` ON liste.id = aufgabe.listen_id WHERE isCompleted = 0 AND aufgabe.user_email = '"+activeUser+"' ORDER BY priorität ASC;");
+                        //View1 used
+                            Request("SELECT name, beschreibung, priorität FROM selectunchecked WHERE user_email = '"+activeUser+"' ORDER BY priorität DESC;");
                             break;
                     }
                 }
@@ -187,7 +189,8 @@ public class ConsolApplication{
                     Console.WriteLine("\nID der Liste die ausgegeben wird: ");
                     string ?list = Console.ReadLine();
                     Console.WriteLine("\nListe    Beschreibung    Priorität");
-                    Request("SELECT liste.name, aufgabe.beschreibung, aufgabe.priorität FROM `aufgabe` JOIN  `liste` ON liste.id = aufgabe.listen_id WHERE listen_ID = "+list+" AND isCompleted = 0 AND aufgabe.user_email = '"+activeUser+"';");
+                    //View1 used
+                    Request("SELECT name, beschreibung, priorität FROM selectunchecked WHERE user_email = '"+activeUser+"' AND listen_ID = "+list+"';");
                 }
 
                 void CheckTask(){
@@ -201,12 +204,14 @@ public class ConsolApplication{
 
                 void FinishedTasks(){
                     Console.WriteLine("\nListe    Beschreibung    Priorität");
-                    Request("SELECT liste.name, aufgabe.beschreibung, aufgabe.priorität FROM `aufgabe` JOIN  `liste` ON liste.id = aufgabe.listen_id WHERE isCompleted = 1 AND aufgabe.user_email = '"+activeUser+"'");
+                    //View2 used
+                    Request("SELECT name, beschreibung, priorität FROM selectchecked WHERE aufgabe.user_email = '"+activeUser+"'");
                 }
 
                 void RestoreTask(){
                     Console.WriteLine("\nID     Liste    Beschreibung    Priorität");
-                    Request("SELECT aufgabe.id, liste.name, aufgabe.beschreibung, aufgabe.priorität FROM `aufgabe` JOIN  `liste` ON liste.id = aufgabe.listen_id WHERE isCompleted = 1 AND aufgabe.user_email = '"+activeUser+"'");
+                    //View2 used
+                    Request("SELECT id, name, beschreibung, priorität FROM selectchecked WHERE aufgabe.user_email = '"+activeUser+"'");
                     Console.WriteLine("ID der wiederherzustellenden Aufgabe: ");
                     string ?task = Console.ReadLine();
                     Request("UPDATE aufgabe SET isCompleted = 0 WHERE id = "+task+";");
