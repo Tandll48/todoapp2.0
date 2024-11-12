@@ -4,8 +4,7 @@ using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Ocsp;
 using System.IO;
 using System.Text;
-
-
+using System.Drawing.Printing;
 
 public class ConsolApplication{
     public static void Main(string[] args){
@@ -167,12 +166,110 @@ public class ConsolApplication{
             }
         }
 
-        
-
         void RestoreData(){
-
-            Console.WriteLine("Backup restored succesfull!\n");
+            // Ruft die Restore-Methoden für jede Tabelle auf   
+            RestoreDataList();
+            RestoreDataUser();
+            RestoreDataAufgabe();
         }
+
+        // Methode zur Wiederherstellung der 'Liste'-Tabelle aus der Backup-Datei
+        void RestoreDataList(){
+            // Löscht alle vorhandenen Daten in der 'Liste'-Tabelle
+            Request("DELETE FROM Liste");
+
+            // Pfad zur Backup-Datei für die 'Liste'-Tabelle
+            string filePath = "..\\Backups\\ToDoListeBackup.txt";
+            // Liest alle Zeilen der Datei in ein Array
+            string[] lines = File.ReadAllLines(filePath);
+
+            // Durchläuft jede Zeile in der Datei
+            foreach (string line in lines)
+            {
+                // Teilt die Zeile in Werte auf, getrennt durch Kommas
+                string[] values = line.Split(',');
+
+                // Prüft, ob die Zeile zwei Werte enthält (id und Name)
+                if (values.Length == 2)
+                {
+                    // Erzeugt eine SQL-Abfrage zum Einfügen der Daten in die Tabelle
+                    string query = $"INSERT INTO Liste (id, Name) VALUES ({values[0]}, '{values[1]}')";
+                    // Führt die Abfrage in der Datenbank aus
+                    Request(query);
+                }
+            }
+            Console.WriteLine("Liste table restored successfully.");
+        }
+
+        // Methode zur Wiederherstellung der 'User'-Tabelle aus der Backup-Datei
+        void RestoreDataUser(){
+            // Löscht alle vorhandenen Daten in der 'User'-Tabelle
+            Request("DELETE FROM `User`");
+            // Pfad zur Backup-Datei für die 'User'-Tabelle
+            string filePath = "..\\Backups\\ToDoUserBackup.txt";
+            // Liest alle Zeilen der Datei in ein Array
+            string[] lines = File.ReadAllLines(filePath);
+            // Durchläuft jede Zeile in der Datei
+            foreach (string line in lines)
+            {
+                // Teilt die Zeile in Werte auf, getrennt durch Kommas
+                string[] values = line.Split(',');
+                // Prüft, ob mindestens zwei Werte vorhanden sind (email und password)
+                if (values.Length == 2)
+                {
+                    // Erzeugt eine SQL-Abfrage zum Einfügen der Daten in die Tabelle
+                    string query = $"INSERT INTO `User` (email, password) VALUES ('{values[0]}', '{values[1]}')";
+                    // Führt die Abfrage in der Datenbank aus
+                    Request(query);
+                }
+            }
+            Console.WriteLine("User table restored successfully.");
+        }
+
+        // Methode zur Wiederherstellung der 'Aufgabe'-Tabelle aus der Backup-Datei
+        void RestoreDataAufgabe(){
+            // Löscht alle vorhandenen Daten in der 'Aufgabe'-Tabelle
+            Request("DELETE FROM Aufgabe");
+            // Pfad zur Backup-Datei für die 'Aufgabe'-Tabelle
+            string filePath = "..\\Backups\\ToDoAufgabeBackup.txt";
+            // Liest alle Zeilen der Datei in ein Array
+            string[] lines = File.ReadAllLines(filePath);
+            // Durchläuft jede Zeile in der Datei
+            foreach (string line in lines)
+            {
+                // Teilt die Zeile in Werte auf, getrennt durch Kommas
+                string[] values = line.Split(',');
+                // Prüft, ob die Zeile sechs Werte enthält (id, beschreibung, priorität, listen_id, user_email, isCompleted)
+                if(values.Length == 6){
+                    // Erzeugt eine SQL-Abfrage zum Einfügen der Daten in die Tabelle
+                    string query = $"INSERT INTO Aufgabe (id, beschreibung, priorität, listen_id, user_email, isCompleted) VALUES ({values[0]}, '{values[1]}', {values[2]}, {values[3]}, '{values[4]}', {values[5]})";
+                    // Führt die Abfrage in der Datenbank aus
+                    Request(query);
+                }
+
+            }
+            
+            Console.WriteLine("Aufgabe table restored successfully.");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
         
         

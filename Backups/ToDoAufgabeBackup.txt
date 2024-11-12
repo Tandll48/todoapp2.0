@@ -1,2 +1,1 @@
 15,Kaese,3,8,leojotandl@gmail.com,True
-16,Kiwi,1,8,leojotandl@gmail.com,False
