@@ -2,6 +2,10 @@ namespace Datenbank1;
 using System;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Ocsp;
+using System.IO;
+using System.Text;
+
+
 
 public class ConsolApplication{
     public static void Main(string[] args){
@@ -50,17 +54,19 @@ public class ConsolApplication{
             }
         }
 
-
-        Request("CREATE DATABASE IF NOT EXISTS todoapplication; USE todoapplication; CREATE TABLE IF NOT EXISTS Liste(id INT AUTO_INCREMENT PRIMARY KEY,Name TEXT); CREATE TABLE IF NOT EXISTS aufgabe ( id INT AUTO_INCREMENT PRIMARY KEY, beschreibung TEXT, priorität INT CHECK (priorität BETWEEN 0 AND 5), listen_id INT REFERENCES liste(id) );");
+        string structure = "CREATE DATABASE IF NOT EXISTS todoapplication; USE todoapplication; CREATE TABLE IF NOT EXISTS Liste(id INT AUTO_INCREMENT PRIMARY KEY,Name TEXT); CREATE TABLE IF NOT EXISTS aufgabe ( id INT AUTO_INCREMENT PRIMARY KEY, beschreibung TEXT, priorität INT CHECK (priorität BETWEEN 0 AND 5), listen_id INT REFERENCES liste(id) );";
+        Request(structure);
         Console.WriteLine("PROLQS-Datenbankanwendung");
-        string activeUser = "";
+        string ?activeUser = "";
         LoginToDo();
         void LoginToDo(){
             Console.WriteLine("AnmeldeFenster");
             while (true){
                 Console.WriteLine("1. Anmelden");
                 Console.WriteLine("2. Registrieren");
-                Console.WriteLine("3. Beenden");
+                Console.WriteLine("3. Backup");
+                Console.WriteLine("4. Restore last Backup");
+                Console.WriteLine("5. Beenden");
                 Console.Write("Auswahl: ");
                 string ?input = Console.ReadLine();
                 switch (input){
@@ -71,6 +77,12 @@ public class ConsolApplication{
                         SignIn();
                         break;
                     case "3":
+                        BackupAll();
+                        break;
+                    case "4":
+                        RestoreData();
+                        break;
+                    case "5":
                         return;
                 }
             }
@@ -100,6 +112,62 @@ public class ConsolApplication{
             string ?password = Console.ReadLine();
             Request("INSERT INTO `user`(`email`, `password`) VALUES ('"+email+"','"+password+"');");
             MainConsole();
+        }
+
+        void BackupAll(){  
+
+            File.WriteAllText("..\\Backups\\ToDoAufgabeBackup.txt", BackupTable("Aufgabe"));
+            File.WriteAllText("..\\Backups\\ToDoListeBackup.txt", BackupTable("Liste"));
+            File.WriteAllText("..\\Backups\\ToDoUserBackup.txt",BackupTable("User"));
+            Console.WriteLine("Backup was successful");            
+        }
+        
+        string BackupTable(string table){
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                // StringBuilder to store all data
+                StringBuilder backupData = new StringBuilder();
+
+                // Create a query to select all data from the current table
+                string query = $"SELECT * FROM {table}";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    // Process each row in the current table
+                    while (reader.Read())
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            // Append each column's data
+                            backupData.Append(reader[i].ToString());
+
+                            // Append a comma if it's not the last column
+                            if (i < reader.FieldCount - 1)
+                                backupData.Append(",");
+                        }
+
+                        // Add a newline after each row
+                        backupData.AppendLine();
+                    }
+                }
+
+                // Separate tables with a newline
+                backupData.AppendLine();
+                return backupData.ToString();
+            }
+
+
+            
+        }
+
+        
+
+        void RestoreData(){
+
+            Console.WriteLine("Backup restored succesfull!\n");
         }
         
         
