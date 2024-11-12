@@ -114,53 +114,57 @@ public class ConsolApplication{
             MainConsole();
         }
 
+        // Methode zur Durchführung des Backups aller Tabellen
         void BackupAll(){  
-
+            // Ruft die Backup-Daten für jede Tabelle ab und schreibt sie in eine Datei
+            // Für jede Tabelle wird die BackupTable-Methode aufgerufen und das Ergebnis in eine Textdatei gespeichert.
             File.WriteAllText("..\\Backups\\ToDoAufgabeBackup.txt", BackupTable("Aufgabe"));
             File.WriteAllText("..\\Backups\\ToDoListeBackup.txt", BackupTable("Liste"));
-            File.WriteAllText("..\\Backups\\ToDoUserBackup.txt",BackupTable("User"));
-            Console.WriteLine("Backup was successful");            
-        }
-        
-        string BackupTable(string table){
+            File.WriteAllText("..\\Backups\\ToDoUserBackup.txt", BackupTable("User"));
 
+            // Gibt eine Erfolgsmeldung aus, nachdem das Backup durchgeführt wurde
+            Console.WriteLine("Backup was successful");            
+            }
+
+            // Methode zum Erstellen eines Backups einer spezifischen Tabelle
+            string BackupTable(string table){
+            // Verbindet sich mit der MySQL-Datenbank
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
+                // Öffnet die Verbindung zur Datenbank
                 connection.Open();
-                // StringBuilder to store all data
+                
+                // StringBuilder wird verwendet, um die Backup-Daten in einer einzigen Zeichenkette zu speichern
                 StringBuilder backupData = new StringBuilder();
 
-                // Create a query to select all data from the current table
+                // Erzeugt eine SQL-Abfrage, um alle Daten aus der angegebenen Tabelle abzurufen
                 string query = $"SELECT * FROM {table}";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
+                // Führt die Abfrage aus und liest die Daten aus
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    // Process each row in the current table
+                    // Durchläuft jede Zeile (Datensatz) in der Tabelle
                     while (reader.Read())
                     {
+                        // Durchläuft alle Spalten in der aktuellen Zeile
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            // Append each column's data
+                            // Fügt den Wert der aktuellen Spalte zum Backup-Datenstring hinzu
                             backupData.Append(reader[i].ToString());
 
-                            // Append a comma if it's not the last column
+                            // Fügt ein Komma zwischen den Spaltenwerten hinzu, wenn es sich nicht um die letzte Spalte handelt
                             if (i < reader.FieldCount - 1)
                                 backupData.Append(",");
                         }
 
-                        // Add a newline after each row
+                        // Fügt einen Zeilenumbruch nach jeder Zeile (Datensatz) hinzu
                         backupData.AppendLine();
                     }
                 }
-
-                // Separate tables with a newline
-                backupData.AppendLine();
+                // Gibt die generierten Backup-Daten als Text zurück
                 return backupData.ToString();
             }
-
-
-            
         }
 
         
